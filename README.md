@@ -1,6 +1,16 @@
->## A Big Update Is Coming
+# This fork of React Hot Loader is specifically hacked together for Sift Science
 
->React Hot Loader 3 is [on the horizon](https://github.com/gaearon/react-hot-loader/pull/240), and you can try it today ([boilerplate branch](https://github.com/gaearon/react-hot-boilerplate/pull/61), [upgrade example](https://github.com/gaearon/redux-devtools/commit/64f58b7010a1b2a71ad16716eb37ac1031f93915)). It fixes some [long-standing issues](https://twitter.com/dan_abramov/status/722040946075045888) with both React Hot Loader and React Transform, and is intended as a replacement for both. The docs are not there yet, but you can view a getting starting guide on [the README on the `next` branch](https://github.com/gaearon/react-hot-loader/tree/next/docs). You can install RHL3 using `npm install --save-dev react-hot-loader@next`
+Sift Science had some irreconcilable issues adopting React Hot Loader v3, including:
+
+* v3 [does not properly bind ES6 class methods](https://github.com/gaearon/react-proxy/issues/69) or arrow functions (via [react-proxy](https://github.com/gaearon/react-proxy))
+* we do not use React Router, but use `require.ensure` extensively, which we found to be quite buggy with v3
+* v3 relies on the `AppContainer` component wrapping our root instance as children, which has certain negative effects within our UI (unmounting/remounting the children). `AppContainer`, with v3, is also supposed to remain in production.
+
+However, while upgrading to React >= 16, we found that we could no longer use RHLv1 out of the box. This fork adds [react-deep-force-update](https://github.com/gaearon/react-deep-force-update) to v1, providing it with our global-in-development root component, bringing back the fabulous v1 functionality to the latest React.
+
+A hack indeed, but it works!
+
+
 
 # React Hot Loader [![npm package](https://img.shields.io/npm/v/react-hot-loader.svg?style=flat-square)](https://www.npmjs.org/package/react-hot-loader)
 
