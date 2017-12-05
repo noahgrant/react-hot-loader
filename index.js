@@ -1,5 +1,3 @@
-'use strict';
-
 var path = require('path'),
     SourceNode = require('source-map').SourceNode,
     SourceMapConsumer = require('source-map').SourceMapConsumer,
@@ -23,25 +21,17 @@ module.exports = function (source, map) {
       node,
       result;
 
-  var reactMountImport;
-  try {
-    require('react-dom/lib/ReactMount');
-    reactMountImport = 'ReactMount = require("react-dom/lib/ReactMount"),';
-} catch(e) {
-    reactMountImport = 'ReactMount = require("react/lib/ReactMount"),';
-  }
-
   prependText = [
     '/* REACT HOT LOADER */',
     'if (module.hot) {',
       '(function () {',
         'var ReactHotAPI = require(' + JSON.stringify(require.resolve('react-hot-api')) + '),',
+            'deepForceUpdate = require(' + JSON.stringify(require.resolve('react-deep-force-update')) + '),',
             'RootInstanceProvider = require(' + JSON.stringify(require.resolve('./RootInstanceProvider')) + '),',
-            reactMountImport,
             'React = require("react");',
 
         'module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () {',
-          'return RootInstanceProvider.getRootInstances(ReactMount);',
+          'deepForceUpdate(React)(window._SiftApp.appLayoutWrapper);',
         '}, React);',
       '})();',
     '}',

@@ -1,15 +1,16 @@
 {
-  "name": "react-hot-loader",
-  "version": "1.3.1",
-  "description": "Tweak React components in real time.",
+  "name": "sift-react-hot-loader",
+  "version": "0.1.0",
+  "description": "Tweak React components in real time (modified for the Sift Science Console).",
   "main": "index.js",
   "dependencies": {
+    "react-deep-force-update": "^1.1.1",
     "react-hot-api": "^0.4.5",
     "source-map": "^0.4.4"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-loader.git"
+    "url": "https://github.com/noahgrant/react-hot-loader.git"
   },
   "keywords": [
     "react",
@@ -26,7 +27,7 @@
   "author": "Dan Abramov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/react-hot-loader/issues"
+    "url": "https://github.com/noahgrant/react-hot-loader/issues"
   },
-  "homepage": "https://github.com/gaearon/react-hot-loader"
+  "homepage": "https://github.com/noahgrant/react-hot-loader"
 }
