@@ -1,6 +1,6 @@
 {
   "name": "sift-react-hot-loader",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tweak React components in real time (modified for the Sift Science Console).",
   "main": "index.js",
   "dependencies": {

@@ -31,7 +31,7 @@ module.exports = function (source, map) {
             'React = require("react");',
 
         'module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () {',
-          'deepForceUpdate(React)(window._SiftApp.appLayoutWrapper);',
+          'deepForceUpdate(React)(window._SiftApp.appRoot);',
         '}, React);',
       '})();',
     '}',
